@@ -9,6 +9,7 @@ import umap
 
 from sklearn import metrics
 from sklearn.cluster import KMeans
+from sklearn.mixture import GaussianMixture
 
 NSEEDS = 5
 
@@ -38,6 +39,9 @@ def main():
     y_pred = None
     if args.clustering_algo == "KMeans":
         y_pred = KMeans(n_clusters=num_classes, random_state=20).fit_predict(X)
+
+    if args.clustering_algo == "GMM":
+        y_pred = GaussianMixture(n_components=num_classes, random_state=20).fit_predict(X)
 
 
 
